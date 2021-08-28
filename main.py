@@ -45,6 +45,17 @@ class Neural_Network(object):
     def train(self, x, y):
         o = self.forward(x)
         self.backword(x, y, o)
+
+    def prediction(self):
+        print("Données prédite aprés entrainnement: ")
+        print("Entrées : \n" + str(xPrediction))
+        print("Sortie : \n" + str(self.forward(xPrediction)))
+
+        if(self.forward(xPrediction) > 0.5):
+            print("La fleur est rouge \n")
+        else:
+            print("La fleur est bleue \n")
+
 MN = Neural_Network()
 for i in range(30000):
     print("#" + str(i) + "\n")
@@ -52,6 +63,8 @@ for i in range(30000):
     print("Sortie actuelle: \n" + str(y_sortie))
     print("Sortie predite: \n" + str(np.matrix.round(MN.forward(x), 2)))
     MN.train(x, y_sortie)
+
+MN.prediction()
 
 
 
